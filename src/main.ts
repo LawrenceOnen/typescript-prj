@@ -46,13 +46,22 @@ const addId = <T extends object>(obj: T) => {
   };
 }
 
-interface StudentInterface {
+interface StudentInterface<T> {
   fname: string;
+  data: T;
 }
 
-const student: StudentInterface = {
-  fname: "Lawrence"
+const student: StudentInterface<{meta: string}> = {
+  fname: "Lawrence",
+  data: {
+    meta: "foo"
+  }
 }
 
-const reuslt = addId<StudentInterface>(student);
-console.log(reuslt);
+const student2: StudentInterface<string[]> = {
+  fname: "Lawrence",
+  data: ["So", "I", "Used", "Generics"],
+}
+
+//const reuslt = addId<StudentInterface>(student2);
+//console.log(reuslt);
